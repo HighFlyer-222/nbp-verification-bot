@@ -1,6 +1,6 @@
 const Discord = require("discord.js")
 const SteamAPI = require("steamapi")
-const { discordToken, steamToken, verificationChannel, verifiedRole } = require('./config.json')
+const { discordToken, steamToken, verificationChannel, verifiedRole } = process.env
 const client = new Discord.Client({ intents: [Discord.GatewayIntentBits.MessageContent, Discord.GatewayIntentBits.GuildMessages, Discord.GatewayIntentBits.Guilds, Discord.GatewayIntentBits.GuildMembers] })
 const Steam = new SteamAPI(steamToken)
 
