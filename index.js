@@ -13,15 +13,17 @@ client.on(Discord.Events.MessageCreate, message => {
 	if (message.author.bot) return;
 	Steam.resolve(message.content)
 		.then(id => {
-			if (message.embeds.length == 0) {
-				message.reply("Epic embed fail?? Make sure the link embeds so I can see your profile description.")
-				return
-			} else {
-				if (!message.embeds[0].description.includes(message.author.id)) {
-					message.reply("You need to add your Discord user ID to your Steam profile summary and try again so I can be sure this account is yours!")
+			setTimeout(() => {
+				if (message.embeds.length == 0) {
+					message.reply("Epic embed fail?? Make sure the link embeds so I can see your profile description.")
 					return
+				} else {
+					if (!message.embeds[0].description.includes(message.author.id)) {
+						message.reply("You need to add your Discord user ID to your Steam profile summary and try again so I can be sure this account is yours!")
+						return
+					}
 				}
-			}
+			}, 2000);
 			Steam.getUserOwnedGames(id, true)
 				.then(ownedGames => {
 					let appIDs = []
