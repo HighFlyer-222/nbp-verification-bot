@@ -1,6 +1,6 @@
-const keep_alive = require("./keep_alive.js");
 const Discord = require("discord.js");
 const SteamAPI = require("steamapi");
+require('dotenv').config();
 const { discordToken, steamToken, verificationChannel, verifiedRole } =
   process.env;
 const client = new Discord.Client({
